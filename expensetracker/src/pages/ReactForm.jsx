@@ -4,18 +4,10 @@ import {z} from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 
- type FormData = {
-  firstName: string,
-  lastName: string,
-  email: string,
-  age: number,
-  password: string,
-  confirmPassword: string,
-  }
 
 const ReactForm = () => {
  
-  const userSchema: ZodType<FormData> = z.object({
+  const userSchema = z.object({
     firstName: z.string().min(2).max(30),
     lastName: z.string().min(2).max(30),
     email: z.string().email(),
@@ -29,10 +21,10 @@ const ReactForm = () => {
     
   })
 
- const { register, handleSubmit } = 
-  useForm<FormData>({ resolver:zodResolver(userSchema) })
+ const { register, handleSubmit, formState: { errors } } = 
+  useForm({ resolver:zodResolver(userSchema) })
 
-  const submitData = (data: FormData) => {
+  const submitData = (data) => {
     console.log("IT WORKED", data)
   }
 
@@ -41,16 +33,22 @@ const ReactForm = () => {
          <form action="" onSubmit={handleSubmit(submitData)}>
         <label>First Name</label>
         <input type="text" {...register("firstName")} className='bg-white block border-2'/>
+        {errors.firstName && <span>{errors.firstName.message}</span>}
         <label>Last Name</label>
         <input type="text" {...register("lastName")}  className='bg-white block border-2'/>
+        {errors.lastName && <span>{errors.lastName.message}</span>}
         <label>Email:</label>
         <input type="email" {...register("email")} className='bg-white block border-2'/>
+        {errors.email && <span>{errors.email.message}</span>}
         <label>Age</label>
         <input type="number" {...register("age", { valueAsNumber: true }) }  className='bg-white block border-2'/>
+        {errors.email && <span>{errors.age.message}</span>}
         <label>Password</label>
         <input type="password" {...register("password")} className='bg-white block border-2'/>      
+        {errors.password && <span>{errors.password.message}</span>}
         <label>Confirm Password</label>
         <input type="password" {...register("confirmPassword")} className='bg-white block border-2'/>
+        {errors.confirmPassword && <span>{errors.confirmPassword.message}</span>}
         <input type="submit" />
 
       </form>
