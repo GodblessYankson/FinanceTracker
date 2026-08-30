@@ -12,11 +12,8 @@ const ReactForm = () => {
         .min(2)
         .max(30)
         .regex(
-          /^[A-Z]/,
+          /^[A-Z][A-Za-z]*$/,
           "Must begin with a capital number and cannot contain numbers"
-        ).regex(
-          /^[A-Za-z]*$/,
-          "Cannot contain number"        
         ),
       lastName: z.string().min(2).max(30),
       email: z.string().email(),

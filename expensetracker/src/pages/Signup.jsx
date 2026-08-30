@@ -1,6 +1,10 @@
 import React from "react";
 import { useState } from "react";
 import { BsLock, BsUnlock } from "react-icons/bs";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { data } from "react-router-dom";
 
 const Signup = () => {
   //const [showPasswordType, setshowasswordType] = useState(false);
@@ -9,6 +13,32 @@ const Signup = () => {
   const showpassword = () => {
     setshowasswordType(!showPasswordType);
   };
+
+  const userSchema = z.object({
+    firstName: z.string().min(2).max(30).regex(/^[A-Za-z]+$/,"Must be more than one and should contain only letters"),
+    lastName: z.string().min(2).max(30).regex(/^[A-Za-z]+$/, "Must be more than one and should contain only letters"),
+    email: z.string().email("Must be an email"),
+    password: z.string().min(8).max(30).regex(/[A-Za-z0-9][^A-Za-z0-9]*$/, "Must contain alphabets and at least special characters"),
+    confirmPassword: z.string().min(8).max(30, "Please confirm password"),
+    phone: z.string().regex(/^0\d{9}$/, "Enter a valid number"),
+    age: z.string().min(15).max(200),
+    role: z.string(),
+    income: z.string(),
+    hometown: z.string().min(2).max(30).regex(/[A-Za-z][A-Za-z0-9-_] *$/, "Must be more than two alphabets and no special characters except _,-"),
+    nextOfKin: z.string().min(2).max(50).regex(/[A-za-z- ]*$/),
+    nextOfKinPhone: z.string.regex(/^0\d{9}$/),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Password do not match",
+    path: ["confirmPassword"],
+  })
+
+  const {
+    register,
+     handleSubmit,
+     formState: { errors },
+  } = useForm ({ resolver: zodResolver(userSchema) })
+
   return (
     <div className="w-full md:mx-auto flex items-center justify-center ">
       <div className="bg-white text-gray-500 w-full md:w-2/4  p-3  rounded-2xl shadow-2xl my-6">
@@ -21,10 +51,11 @@ const Signup = () => {
             <div className="signupInputDiv">
               <input
                 type="text"
+                {...register("fistName")}
                 autoComplete="off"
                 required
                 placeholder="Enter firstname"
-                className="signupInput"
+                className="Firstname"
               />
             </div>
           </div>
@@ -33,6 +64,7 @@ const Signup = () => {
             <div className="signupInputDiv">
               <input
                 type="text"
+                {...register("lastName")}
                 required
                 autoComplete="off"
                 placeholder="Enter lastname"
@@ -45,6 +77,7 @@ const Signup = () => {
             <div className="signupInputDiv">
               <input
                 type="email"
+                {...register("email")}
                 required
                 autoComplete="off"
                 placeholder="Enter email"
@@ -57,6 +90,7 @@ const Signup = () => {
             <div className="flex items-center justify-between signupInputDiv">
               <input
                 type={showPasswordType === "password" ? "text" : "password"}
+                {...register("password")}
                 required
                 autoComplete="off"
                 placeholder="Enter password"
@@ -77,6 +111,7 @@ const Signup = () => {
             <div className="flex items-center justify-between signupInputDiv">
               <input
                 type={showPasswordType === "confirmPassword" ? "text" : "password"}
+                {...register("confirmPassword")}
                 required
                 autoComplete="off"
                 placeholder="Enter password"
@@ -97,7 +132,21 @@ const Signup = () => {
             <div className="signupInputDiv">
               <input
                 type="number"
+                {...register("phone")}
                 placeholder="Enter phone"
+                required
+                autoComplete="off"
+                className="signupInput"
+              />
+            </div>
+          </div>
+          <div className="flex flex-col gap-2">
+            <label className="signupLabel">Age</label>
+            <div className="signupInputDiv">
+              <input
+                type="number"
+                {...register("age")}
+                placeholder="Enter age"
                 required
                 autoComplete="off"
                 className="signupInput"
@@ -107,7 +156,7 @@ const Signup = () => {
           <div className="flex flex-col gap-2">
             <label className="signupLabel">Select Role</label>
             <div className="signupInputDiv">
-              <select name="role" id="role" className="signupInput">
+              <select name="role" id="role" {...register("role")} className="signupInput">
                 <option value="">User</option>
                 <option value="">Admin</option>
               </select>
@@ -116,7 +165,7 @@ const Signup = () => {
           <div className="flex flex-col gap-2">
             <label className="signupLabel">Source of income</label>
             <div className="signupInputDiv">
-              <select name="role" id="role" className="signupInput">
+              <select name="role" id="role" {...register("income")} className="signupInput">
                 <option value="">Salary</option>
                 <option value="">Savings</option>
                 <option value="">Others</option>
@@ -128,6 +177,7 @@ const Signup = () => {
             <div className="signupInputDiv">
               <input
                 type="text"
+                {...register("hometown")}
                 required
                 autoComplete="off"
                 placeholder="Enter hometown"
@@ -140,9 +190,23 @@ const Signup = () => {
             <div className="signupInputDiv">
               <input
                 type="text"
+                {...register("nextOfKin")}
                 required
                 autoComplete="off"
                 placeholder="Enter next of kin"
+                className="signupInput"
+              />
+            </div>
+          </div>
+           <div className="flex flex-col gap-2">
+            <label className="signupLabel">Phone</label>
+            <div className="signupInputDiv">
+              <input
+                type="number"
+                {...register("nextOfKingPhone")}
+                placeholder="Enter phone"
+                required
+                autoComplete="off"
                 className="signupInput"
               />
             </div>

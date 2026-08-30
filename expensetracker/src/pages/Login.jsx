@@ -3,7 +3,10 @@ import { auth, provider } from "../config/firebaseconfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { Link } from "react-router-dom";
 import { BsLock, BsUnlock } from "react-icons/bs";
-
+/* import {z} from "zod"
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+ */
 const Login = () => {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
@@ -23,14 +26,20 @@ const Login = () => {
       console.log("Errror creeating user");
     }
   };
+/*   const userSchema = z.object({
+    email: z.string().email()
+  }) */
+
 
   return (
     <div className="md:mx-auto flex items-center justify-center w-full ">
-      <div className="bg-white w-full md:w-2/4 my-20 px-4 py-6 rounded-2xl shadow-2xl">
-        <p className="text-2xl tracking-wider font-bold text-center py-4">
+       <div className="bg-white w-full md:w-2/4 my-20 px-4 py-6 rounded-2xl shadow-2xl">
+      
+       <p className="text-2xl tracking-wider font-bold text-center py-4">
           Login
         </p>
-        <div className="my-3">
+         <form action="">
+          <div className="my-3"> 
           <label className="font-semibold tracking-wider text-md">
             Enter your email
           </label>
@@ -73,11 +82,13 @@ const Login = () => {
           >
             Sign In
           </button>
+         </div> 
+         </form>
 
           <button className="bg-violet-500 py-2 px-6 my-4 text-white hover:bg-violet-700 hover:shadow-xl rounded-lg font-light text-xl  tracking-wide">
             Sign In With Google
           </button>
-        </div>
+        
         <button>
           <Link
             to="/signup"
@@ -85,8 +96,8 @@ const Login = () => {
           >
             Does not have an account? Sign Up
           </Link>
-        </button>
-      </div>
+        </button> 
+      </div> 
     </div>
   );
 };
