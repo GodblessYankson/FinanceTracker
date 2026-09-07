@@ -14,7 +14,7 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/auth" element={<Auth />} />
-        <Route path="/LoginAuth" element={<LoginAuth />} />
+        <Route path="/loginAuth" element={<LoginAuth />} />
         <Route path="/zodtrials" element={<Zodtrials />} />
         <Route path="/forms" element={<ReactForm />} />
       </Routes>

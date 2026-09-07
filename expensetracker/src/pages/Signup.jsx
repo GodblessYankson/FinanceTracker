@@ -20,7 +20,7 @@ const Signup = () => {
     navigate(-1)
   }
   const gotoLogin = () => {
-    navigate("/LoginAuth")
+    navigate("/loginAuth")
   }
 
 
@@ -329,7 +329,7 @@ const Signup = () => {
               </span>
             )}
           </div>
-          <div className="flex gap-6 items-center ">
+          <div className="grid md:grid-cols-3 gap-2 mt-5">
             <button onClick={goBack} className="signUpBtn bg-red-500 hover:bg-hover-700">
             Back
           </button>
