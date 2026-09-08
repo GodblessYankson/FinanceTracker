@@ -5,24 +5,15 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { data } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-
+import{ useNavigation } from "../utils/useNavigation"
 const Signup = () => {
-  //const [showPasswordType, setshowasswordType] = useState(false);
   const [showPasswordType, setshowasswordType] = useState(null);
 
   const showpassword = () => {
     setshowasswordType(!showPasswordType);
   };
-  const navigate = useNavigate()
-
-  const goBack = () => {
-    navigate(-1)
-  }
-  const gotoLogin = () => {
-    navigate("/loginAuth")
-  }
-
+  
+  const { goBack, goLogin } = useNavigation()
 
   const userSchema = z
     .object({
@@ -333,7 +324,7 @@ const Signup = () => {
             <button onClick={goBack} className="signUpBtn bg-red-500 hover:bg-hover-700">
             Back
           </button>
-          <button onClick={gotoLogin} className="signUpBtn bg-blue-500 hover:bg-hover-700">
+          <button onClick={goLogin} className="signUpBtn bg-blue-500 hover:bg-hover-700">
             Login
           </button>
           <button className="signUpBtn bg-green-500 hover:bg-hover-700">
