@@ -6,14 +6,26 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { data } from "react-router-dom";
 import{ useNavigation } from "../utils/useNavigation"
+import { db } from "../config/firebaseconfig";
+import { auth, provider } from "../config/firebaseconfig";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useAddUserInfo } from "../hooks/useAddUserInfo";
+
 const Signup = () => {
   const [showPasswordType, setshowasswordType] = useState(null);
 
   const showpassword = () => {
     setshowasswordType(!showPasswordType);
   };
-  
+  //Navigations
   const { goBack, goLogin } = useNavigation()
+
+  //Adding user information to firebase
+  const { addUserInfo } = useAddUserInfo()
+  const submitUserInfo = async(data) => {
+   await addUserInfo(data)
+  }
+  
 
   const userSchema = z
     .object({
@@ -34,7 +46,8 @@ const Signup = () => {
           "Must be more than one and should contain only letters",
         ),
       email: z.string().email("Must be an email"),
-      password: z
+
+       password: z
         .string()
         .min(8, "Password must be more than 7")
         .max(30, "Password must be less than 31")
@@ -45,7 +58,8 @@ const Signup = () => {
       confirmPassword: z
         .string()
         .min(8, "Password must be more 7")
-        .max(30, "Password must not exceed 30 characters"),
+        .max(30, "Password must not exceed 30 characters"), 
+ 
       phone: z.string().regex(/^0\d{9}$/, "Enter a valid number"),
       age: z.coerce
         .number()
@@ -76,21 +90,18 @@ const Signup = () => {
       path: ["confirmPassword"],
     });
 
-  const {
+   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: zodResolver(userSchema) });
 
-  const submitData = (data) => {
-    console.log("It worked, well", data);
-  };
 
   return (
     <div className="w-full md:mx-auto flex items-center justify-center ">
       <div className="bg-white text-gray-500 w-full md:w-2/4  p-3  rounded-2xl shadow-2xl my-6">
-        <form action="" className="" onSubmit={handleSubmit(submitData)}>
-          <p className="text-3xl font-bold text-violet-500 text-center tracking-wider">
+        <form action="" className="" onSubmit={handleSubmit(submitUserInfo)}>
+          <p className="text-3xl font-bo~ld text-violet-500 text-center tracking-wider">
             Sign Up
           </p>
           <div className="flex flex-col gap-2 ">
@@ -144,7 +155,7 @@ const Signup = () => {
               </span>
             )}
           </div>
-          <div className="flex flex-col gap-2">
+        *   <div className="flex flex-col gap-2">
             <label className="signupLabel">Password</label>
             <div className="flex items-center justify-between signupInputDiv">
               <input
@@ -207,7 +218,7 @@ const Signup = () => {
                 {errors.confirmPassword.message}
               </span>
             )}
-          </div>
+          </div> 
           <div className="flex flex-col gap-2">
             <label className="signupLabel">Phone</label>
             <div className="signupInputDiv">
@@ -327,7 +338,7 @@ const Signup = () => {
           <button onClick={goLogin} className="signUpBtn bg-blue-500 hover:bg-hover-700">
             Login
           </button>
-          <button className="signUpBtn bg-green-500 hover:bg-hover-700">
+          <button type="submit" className="signUpBtn bg-green-500 hover:bg-hover-700">
             Register
           </button>
           </div>

@@ -5,8 +5,8 @@ import Auth from "./auth/Auth";
 import Signup from "./pages/signup";
 import LoginAuth from "./auth/LoginAuth";
 import Zodtrials from "./pages/Zodtrials";
-import ReactForm from "./pages/ReactForm";
-
+/* import ReactForm from "./pages/ReactForm";
+ */
 function App() {
   return (
     <div className="bg-violet-500 w-full h-auto ">
@@ -16,8 +16,8 @@ function App() {
         <Route path="/auth" element={<Auth />} />
         <Route path="/loginAuth" element={<LoginAuth />} />
         <Route path="/zodtrials" element={<Zodtrials />} />
-        <Route path="/forms" element={<ReactForm />} />
-      </Routes>
+{/*         <Route path="/forms" element={<ReactForm />} />
+ */}      </Routes>
     </div>
   );
 }

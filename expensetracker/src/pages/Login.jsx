@@ -3,10 +3,10 @@ import { auth, provider } from "../config/firebaseconfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { Link } from "react-router-dom";
 import { BsLock, BsUnlock } from "react-icons/bs";
-/* import {z} from "zod"
+import {z} from "zod"
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
- */
+ 
 const Login = () => {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
@@ -26,9 +26,7 @@ const Login = () => {
       console.log("Errror creeating user");
     }
   };
-/*   const userSchema = z.object({
-    email: z.string().email()
-  }) */
+
 
 
   return (
@@ -75,17 +73,17 @@ const Login = () => {
             </button>
           </div>
         </div>
-        <div className="flex items-center gap-6 mb-2 space-y-2">
+        <div className="flex items-center gap-6 space-y-2">
           <button
             onClick={createUser}
-            className="bg-violet-500 py-2 px-6 my-4 text-white hover:bg-violet-700 hover:shadow-xl rounded-lg font-light text-xl  tracking-wide"
+            className="bg-violet-500 w-full py-2 px-6  text-white hover:bg-violet-700 hover:shadow-xl rounded-lg font-light text-xl  tracking-wide"
           >
             Sign In
           </button>
          </div> 
          </form>
 
-          <button className="bg-violet-500 py-2 px-6 my-4 text-white hover:bg-violet-700 hover:shadow-xl rounded-lg font-light text-xl  tracking-wide">
+          <button className="bg-violet-500 w-full py-2 px-6 my-4 text-white hover:bg-violet-700 hover:shadow-xl rounded-lg font-light text-xl  tracking-wide">
             Sign In With Google
           </button>
         
