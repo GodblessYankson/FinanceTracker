@@ -1,28 +1,15 @@
 export const useGetUserInfo = () => {
-    const auth = JSON.parse(localStorage.getItem("auth")) || {}
-    const { 
-        firstName, 
-        lastName, 
-        email,
-        phone,
-        age, 
-        role,
-        income,
-        hometown,
-        nextOfKin,
-        nextOfKinPhone
-     } = auth
+    const getUserInfo = async () => {
+        try {
+            const user = auth.currentUser;
+            if (user) {
+                const userDoc = await getDoc(doc(db, "Users", user.uid));
+                return userDoc.data();
+            }
+        } catch (error) {
+            console.error("Error fetching user info:", error);
+        }
+    }
 
-     return {
-        firstName, 
-        lastName, 
-        email,
-        phone,
-        age, 
-        role,
-        income,
-        hometown,
-        nextOfKin,
-        nextOfKinPhone
-     }
+    return { getUserInfo };
 }

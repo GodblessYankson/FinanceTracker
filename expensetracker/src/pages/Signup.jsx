@@ -4,11 +4,11 @@ import { BsLock, BsUnlock } from "react-icons/bs";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { data } from "react-router-dom";
+//import { data } from "react-router-dom";
 import{ useNavigation } from "../utils/useNavigation"
-import { db } from "../config/firebaseconfig";
+//import { db } from "../config/firebaseconfig";
 import { auth, provider } from "../config/firebaseconfig";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+//import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useAddUserInfo } from "../hooks/useAddUserInfo";
 
 const Signup = () => {
@@ -37,6 +37,7 @@ const Signup = () => {
           /^[A-Za-z]+$/,
           "Must be more than one and should contain only letters",
         ),
+
       lastName: z
         .string()
         .min(2, "Last name must be more than 2 characters")
@@ -45,7 +46,11 @@ const Signup = () => {
           /^[A-Za-z]+$/,
           "Must be more than one and should contain only letters",
         ),
-      email: z.string().email("Must be an email"),
+        
+      email: z
+      .string()
+      .email("Invalid email address"
+      ),
 
        password: z
         .string()
@@ -55,26 +60,42 @@ const Signup = () => {
           /[A-Za-z0-9][^A-Za-z0-9]*$/,
           "Must contain alphabets and at least special characters",
         ),
+
       confirmPassword: z
         .string()
         .min(8, "Password must be more 7")
         .max(30, "Password must not exceed 30 characters"), 
  
-      phone: z.string().regex(/^0\d{9}$/, "Enter a valid number"),
+      phone: z
+      .string()
+      .regex(/^0\d{9}$/, "Enter a valid number"
+      ),
+      
       age: z.coerce
         .number()
         .min(15, "Age must be more than 14 years")
-        .max(200, "Should be between 15 and 200 years"),
-      role: z.string(),
-      income: z.string(),
+        .max(200, "Should be between 15 and 200 years"
+        ),
+        
+      role: z.
+      string()
+      .max(10, "Please selct a role"
+      ),
+      
+      income: z
+      .string()
+      .max(10,"Select your source of income"
+      ),
+      
       hometown: z
         .string()
-        .min(2, "Must tbe more than one character")
+        .min(2, "Must the more than one character")
         .max(30, "Must be less than 30 characters")
         .regex(
           /^[A-Za-z][A-Za-z-_  ]+$/,
           "Must be more than two alphabets and no special characters except _,-",
         ),
+
       nextOfKin: z
         .string()
         .min(2, "Must be more than one characters")
@@ -155,7 +176,7 @@ const Signup = () => {
               </span>
             )}
           </div>
-        *   <div className="flex flex-col gap-2">
+           <div className="flex flex-col gap-2">
             <label className="signupLabel">Password</label>
             <div className="flex items-center justify-between signupInputDiv">
               <input
@@ -260,11 +281,18 @@ const Signup = () => {
                 {...register("role")}
                 className="signupInput"
               >
-                <option value="">User</option>
-                <option value="">Admin</option>
+                <option value="" disabled>Select your role</option>
+                <option value="User">User</option>
+                <option value="Admin">Admin</option>
               </select>
             </div>
+            {errors.role && (
+            <span className="text-red-500 text-sm">
+              {errors.role.message}
+            </span>
+          )}
           </div>
+          
           <div className="flex flex-col gap-2">
             <label className="signupLabel">Source of income</label>
             <div className="signupInputDiv">
@@ -274,11 +302,17 @@ const Signup = () => {
                 {...register("income")}
                 className="signupInput"
               >
-                <option value="">Salary</option>
-                <option value="">Savings</option>
-                <option value="">Others</option>
+                <option value="" disabled>Source of income</option>
+                <option value="Salary">Salary</option>
+                <option value="Savings">Savings</option>
+                <option value="Others">Others</option>
               </select>
             </div>
+            {errors.income && 
+            (
+              <span>{errors.income.message}</span>
+            )
+            }
           </div>
           <div className="flex flex-col gap-2">
             <label className="signupLabel">Hometown</label>
