@@ -1,9 +1,15 @@
-import React from 'react'
+import { useGetUserInfo } from "../../hooks/useGetUserInfo"
 
 const UserDashboard = () => {
+  const { getUserInfo} = useGetUserInfo();
+  const userInfo = getUserInfo();
+  
+  const firstName = userInfo?.firstName || "User";
+  console.log("User Info:", firstName);
+  console.log(userInfo.firstName);
   return (
     <div>
-      <p>This is the user dashboard</p>
+      <p>Welcome, {firstName}</p>
     </div>
   )
 }
