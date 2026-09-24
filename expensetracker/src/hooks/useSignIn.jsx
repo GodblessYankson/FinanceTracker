@@ -36,9 +36,11 @@ export const useSignIn = () => {
             } else if (userData.role === "Admin") {
                 navigate("/admindashboard")
                 toast.success(`Welcome ${userData.firstName}`)
-            } else {
+            } else if (userData.role === "User") {
                 navigate("/userdashboard")
                 toast.success(`Welcome ${userData.firstName}`)
+            } else {
+                console.log("Unknown role")
             }
          } 
     }
