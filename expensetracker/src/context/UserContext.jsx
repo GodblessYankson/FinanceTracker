@@ -1,34 +1,49 @@
-import { useEffect } from "react"
-import { useState } from "react"
-import { auth,db } from "../config/firebaseconfig"
-import { doc,getDoc } from "firebase/firestore"
+import { onAuthStateChanged } from "firebase/auth"
+import { useContext,createContext,useState,useEffect } from "react"
+import { db,auth } from "../config/firebaseconfig"
+import { getDoc,doc  } from "firebase/firestore"
 
-export const getUserInfo = () => {
-    const [isLoading, setisLoading] = useState(true)
-    const [UserInfo, setUserInfo] = useState(null)
+const UserContext = createContext();
+
+export const UserProvider  = ({children}) => {
+    const [isLoading, setIsLoading] = useState(true)
+    const [userInfo, setUserInfo] = useState(null)
 
     useEffect(() => {
-        const getUserInfo = async() => {
+        //checking if user is logged in or not 
+        const isUserLoggedIn = onAuthStateChanged(auth, async (user) => {
+            if(!user) {
+                setUserInfo(null)
+                setIsLoading(false)
+                return
+            }
             try {
-                const user =  auth.currentUser
                 const userDoc = await getDoc(
-                    doc(db,"Users", user.uid)
+                    doc(db, "Users", user.uid)
                 )
                 if(userDoc.exists()) {
                     setUserInfo(userDoc.data())
-                    setisLoading(false)
-                } else {
-                    console.log("User does not exists")
+                    setIsLoading(false)
                 }
-               
-            } catch (error) {
-                console.log("Error:", error)
-            } finally {
-                setisLoading(false)
             }
-        }
-        getUserInfo()
+            catch(error) {
+                console.log("Error getting user info", error)
+            }
+            finally {
+                setIsLoading(false)
+            }
+        })
+        //Stop watching of th firebase
+        return () => isUserLoggedIn();
     }, [])
 
-    return { isLoading, UserInfo }
+    return (
+        <UserContext.Provider value={{userInfo, isLoading}}>
+            {children}
+        </UserContext.Provider>
+    )
+}
+
+export const useUser = () => {
+    return useContext(UserContext)
 }

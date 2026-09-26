@@ -1,27 +1,17 @@
 import React from 'react'
-import { useGetInfoUser } from '../../hooks/useGetUserInfo'
-import { getUserInfo } from '../../context/UserContext'
+import { useUser } from '../../context/UserContext'
 
 const UserDashboard = () => {
-  const { loading, userInfo  } = useGetInfoUser()
-  const { isLoading, UserInfo } = getUserInfo() 
-    if(loading) {
-      return (
-        <p>This is loading</p>
-      )
-    }
-    if(isLoading) {
-      <p>Is loading</p>
-    }
-    const firstName = userInfo?.firstName || "User"
-    const lastName = userInfo?.lastName
-    const fullName = UserInfo?.firstName || "JesusChrist"
+  const { userInfo, loading } = useUser()
 
-    console.log("Users info", userInfo)
+  if(loading) {
+    return <p>Loading...</p>
+  }
   return (
     <div>
-      <p>Hello, {firstName} {lastName}</p>
-      <p>Hi, {fullName}</p>
+      <h1>Welcome, {userInfo?.firstName}</h1>
+      <h1>Email: {userInfo?.email}</h1>
+      <h1>Role: {userInfo?.role}</h1>
     </div>
   )
 }
