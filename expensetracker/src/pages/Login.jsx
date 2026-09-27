@@ -43,7 +43,7 @@ const Login = () => {
 
 
   return (
-    <div className="md:mx-auto flex items-center justify-center w-full ">
+    <div className=" bg-violet-500 md:mx-auto flex items-center justify-center w-full ">
        <div className="bg-white w-full md:w-2/4 my-20 px-4 py-6 rounded-2xl shadow-2xl">
       
        <p className="text-2xl tracking-wider font-bold text-center py-4">

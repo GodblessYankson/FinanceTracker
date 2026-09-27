@@ -119,7 +119,7 @@ const Signup = () => {
 
 
   return (
-    <div className="w-full md:mx-auto flex items-center justify-center ">
+    <div className="bg-violet-500  w-full md:mx-auto flex items-center justify-center ">
       <div className="bg-white text-gray-500 w-full md:w-2/4  p-3  rounded-2xl shadow-2xl my-6">
         <form action="" className="" onSubmit={handleSubmit(submitUserInfo)}>
           <p className="text-3xl font-bo~ld text-violet-500 text-center tracking-wider">

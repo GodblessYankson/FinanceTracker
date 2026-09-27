@@ -8,13 +8,17 @@ import Zodtrials from "./pages/Zodtrials";
 import Dashboard from "./pages/Dashboard"
 import UserDashboard from "./pages/User/UserDashboard";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
+import LandingPage from "./components/LandingPage";
 
 
 function App() {
   return (
-    <div className="bg-violet-500 w-full h-auto ">
+    <div className="w-full h-auto ">
       <Routes>
-        <Route path="/" element={<Login />} />
+{/*         <Route path="/" element={<Login />} />
+ */}     
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/auth" element={<Auth />} />
         <Route path="/loginAuth" element={<LoginAuth />} />
