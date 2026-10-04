@@ -8,15 +8,13 @@ import Zodtrials from "./pages/Zodtrials";
 import Dashboard from "./pages/Dashboard"
 import UserDashboard from "./pages/User/UserDashboard";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
-import LandingPage from "./components/LandingPage";
+import LandingPage from "./components/LandingPage/LandingPage";
 
 
 function App() {
   return (
     <div className="w-full h-auto ">
-      <Routes>
-{/*         <Route path="/" element={<Login />} />
- */}     
+      <Routes>     
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />

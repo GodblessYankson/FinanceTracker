@@ -5,7 +5,7 @@ import { FiMenu } from "react-icons/fi";
 import { IoClose } from "react-icons/io5";
 import { navLinks } from '../constant/index';
 import { Link } from 'react-router-dom';
-import { LoginBtn } from './LoginBtn';
+import { LoginBtn } from './LandingPage/LoginBtn';
 import { useState } from 'react';
 
 
@@ -19,7 +19,7 @@ const Navbar = () => {
     }
 
   return (
-    <nav className='bg-[#fefefe] w-full py-4 px-2 shadow-sm'>
+    <nav className='fixed bg-[#fefefe] w-full py-4 px-2 shadow-sm backdrop-blur-md transition-all duration-300 z-20'>
       <div className='flex justify-between items-center max-w-285 mx-auto'>
         <div className='flex gap-2 items-center'>
             <FaChartBar size={40} className='text-violet-500' />
@@ -48,12 +48,12 @@ const Navbar = () => {
                     showToggle ? <FiMenu size={30} /> : <IoClose size={30}/>
                 }
             </div>
-            <div className='absolute right-0 sm:w-1/2 bg-violet-500 top-20 py-4 px-2 rounded-2xl shadow-2xl h-[50%] space-y-5'>
+            <div className={showToggle ? "hidden" : "absolute left-0 w-full bg-white top-20 py-4 px-2 rounded-2xl shadow-2xl h-[50%] space-y-5 transition-all duration-300 ease-in-out overflow-hidden"}>
                 {
                     navLinks.map((navLink) => (
                         <section key={navLink.id}>
                         <Link to={navLink.path} 
-                            className='text-xl tracking-wider relative after:absolute hover:font-semibold  after:content-[""] after:w-0 after:left-0 after:bg-[#fefefe] hover:after:h-0.5 hover:after:w-full hover:after:-bottom-2  after:transition-all duration-300'>
+                            className='text-xl tracking-wider relative after:absolute hover:font-semibold  after:content-[""] after:w-0 after:left-0 after:bg-violet-500 hover:after:h-0.5 hover:after:w-full hover:after:-bottom-2  after:transition-all duration-300'>
                             {navLink.title}
                     </Link>
                         </section>

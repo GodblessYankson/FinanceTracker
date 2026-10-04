@@ -1,0 +1,181 @@
+/*     //declaring states for calculator inputs
+    const [monthlyIncome, setMonthlyIncome] = useState(3500)
+    const [savingRate, setSavingsRate] = useState(20)
+    const [timeYears, setTimeYears] = useState(3)
+    const [annualReturn, setAnnualReturn] = useState(7)
+
+    //calculations
+    const monthlySavings = (monthlyIncome * savingRate) /100
+    const totalMonths = timeYears * 12
+    const totalContributions = monthlySavings * totalMonths
+
+    //compound interest calculation formula for monthly contributions
+    //FV = PMT * [((1 + R) ^n -1)]
+    const monthlyRate = annualReturn / 100 / 12
+    let projectedTotal = 0
+    
+    if(monthlyRate > 0) {
+        projectedTotal = monthlySavings * ((Math.pow(1 + monthlyRate, totalMonths) - 1) / monthlyRate)
+
+    } else {
+        projectedTotal = totalContributions
+    }
+
+    //calculating interest
+    const totalInterestEarned = Math.max(0, projectedTotal - totalContributions);
+
+    //Helper formatter for USD/GHS currency formatting
+    const formatCurrency = (val) => 
+        new Intl.NumberFormat('GHS', {
+        style: 'currency',
+        currency: 'GHS',
+        maximumFractionDigits: 0,
+    }).format(val)
+
+
+
+     /* Download Button */
+      <section>
+             <div>
+                 <div>
+                     <FaCalculator />
+                     <span>Interactive Savings Estimator</span>
+                 </div>
+                 <h2>
+                     See How Fast Your Wealth Can Grow
+                 </h2>
+                 <p>
+                     Adjust the sliders below to calculate your estimated savings projections with compound intereste over time.
+                 </p>
+             </div>
+             <div>
+                 {/* Sliders input column */}
+                 <div>
+                     {/* Slider 1: Monthly Income */}
+                     <div>
+                         <div>
+                             <label>
+                                 Monthly Income
+                             </label>
+                             <span>
+                                 {formatCurrency(monthlyIncome)}
+                             </span>
+                         </div>
+                         <input
+                             type='range'
+                             min={500}
+                             max={2000}
+                             step={250}
+                             value={monthlyIncome}
+                             onChange={(e) => setMonthlyIncome(Number(e.target.value))}
+                             className='w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-blue-500'
+                         >
+                         </input>
+                     </div>
+     
+                     {/* SLider 2: Savings Percentage */}
+                     <div>
+                         <div>
+                             <label>
+                                 Savings Target (% of income)
+                             </label>
+                             <span>{savingRate}% ({formatCurrency(monthlySavings)})</span>
+                         </div>
+                         
+                             <input
+                              type="range"
+                              min={5}
+                              max={60}
+                              step={1}
+                              value={savingRate}
+                              onChange={(e) => setSavingsRate(Number(e.target.value))}
+                              className='w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-blue-500'
+                              />
+                         
+                     </div>
+     
+                     {/* Slider 3: Time Horizon (Years) */}
+                     <div>
+                         <div>
+                             <label>
+                                 Time Horizon
+                             </label>
+                             <span>
+                                 {timeYears} {timeYears === 1 ? 'Year' : 'Year'}
+                             </span>
+                         </div>
+                         <input
+                          type="range"
+                          min={1}
+                          max={10}
+                          step={1}
+                          value={timeYears}
+                          onChange={(e) => setTimeYears(Number(e.target.value))}
+                          className='w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-blue-500'
+                         >
+                         </input>
+                     </div>
+     
+                     {/* Slider 4: Expected return % */}
+                     <div>
+                         <div>
+                             <label>
+                                 Est. Annual Investment Return
+                             </label>
+                             <span>
+                                 {annualReturn}
+                             </span>
+                         </div>
+                         <input
+                          type='range'
+                          min={0}
+                          max={15}
+                          step={0.5}
+                          value={annualReturn}
+                          onChange={(e) => setAnnualReturn(Number(e.target.value))}
+                          className='w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-blue-500'
+                         >
+                         </input>
+                     </div>
+                 </div>
+     
+                 {/* Results / Breakdown card */}
+                 <div>
+                     <div>
+                         <p>Estimated Total Portfolio</p>
+                         <p>{formatCurrency(projectedTotal)}</p>
+                         <p>Projected wealth accumulated over {timeYears} years</p>
+                         <div>
+                             <div>
+                                 <div>
+                                     <FaPiggyBank />
+                                     <span>Total Monthly Deposit</span>
+                                 </div>
+                                 <span>
+                                     {formatCurrency(monthlySavings)}
+                                 </span>
+                             </div>
+                             <div>
+                                 <div>
+                                     <FaChartLine />
+                                     <span>Principal contributions</span>
+                                 </div>
+                                 <span>{formatCurrency(totalContributions)}</span>
+                             </div>
+     
+                             <div>
+                                 <div>
+                                     <FaChartLine />
+                                     <span>Est. Compound Interest</span>
+                                 </div>
+                                 <span>+ {formatCurrency(totalInterestEarned)}</span>
+                             </div>
+                         </div>
+                     </div>
+                     <button>
+                     <span>Start Saving Now</span>
+                     <FaArrowRight />
+                 </button>
+                 </div>
+             </div>
+         </section> */
