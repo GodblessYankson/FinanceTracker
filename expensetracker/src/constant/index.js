@@ -1,9 +1,10 @@
-import { FaChartPie } from "react-icons/fa";
+import { FaChartPie, FaLinkedin, FaFacebook } from "react-icons/fa";
 import { IoStatsChartSharp } from "react-icons/io5";
 import { MdOutlineNotificationsActive, MdOutlineStar } from "react-icons/md";
 import { GoGoal } from "react-icons/go";
 import { FaShieldAlt } from "react-icons/fa";
 import { FcSmartphoneTablet } from "react-icons/fc";
+import { FaXTwitter } from "react-icons/fa6";
 
 
 
@@ -127,5 +128,51 @@ export const testimonialsDown = [
         shortTitle: "YY",
         subtitle: "FinTrack is helped me stay on track with my finances and acheive my saving goals.",
         icon: MdOutlineStar,
+    }
+]
+
+export const footerIcons = [
+   /*  {
+        id: 1,
+        title: "The modern financial managemnet platform designed to help you save,budget and grow your wealth effortleesly",
+        FinIcon: FaChartBar
+    }, */
+    {
+        id: 2,
+        icon: FaXTwitter
+    },
+    {
+        id: 3,
+        icon: FaLinkedin
+    },
+    {
+        id: 4,
+        icon: FaFacebook
+    }
+]
+
+export const footerLinks = [
+    {
+        id: "Product",
+        title: "PRODUCT",
+        link1: "Features",
+        link2: "Goal Simulator",
+        link3: "Security",
+        link4: "Susu Groups" 
+    },
+    {
+        id: "Company",
+        title: "COMPANY",
+        link1: "About Us",
+        link2: "Careers",
+        link3: "Press Kit",
+        link4: "Contact" 
+    },
+    {
+        id: "Legal",
+        title: "LEGAL",
+        link1: "Privacy Policy",
+        link2: "Terms of service",
+        link3: "Cookie Preferences",
     }
 ]

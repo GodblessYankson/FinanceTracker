@@ -23,7 +23,7 @@ const TestimonialsTop = () => {
           <p className='textcolor'>See how FinTrack is empowering individuals and communities</p>
         </div>
         <div>
-          <div className='grid grid-cols-2 md:grid-cols-2 gap-6'>
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
             {
               testimonialsDown.map((testimonial) => {
                 const Icons = testimonial.icon
