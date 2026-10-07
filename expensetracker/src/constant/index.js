@@ -1,6 +1,6 @@
 import { FaChartPie } from "react-icons/fa";
 import { IoStatsChartSharp } from "react-icons/io5";
-import { MdOutlineNotificationsActive } from "react-icons/md";
+import { MdOutlineNotificationsActive, MdOutlineStar } from "react-icons/md";
 import { GoGoal } from "react-icons/go";
 import { FaShieldAlt } from "react-icons/fa";
 import { FcSmartphoneTablet } from "react-icons/fc";
@@ -69,5 +69,63 @@ export const feauturesIcons = [
         title: "Seamless Sync",
         subtitle: "Access your balances and budget updates in real-time across desktop, tablet, or mobile phone.",
         icon: FcSmartphoneTablet
+    }
+]
+
+export const testimonialsTop = [
+    {
+        id: 1,
+        title: "$50M+",
+        subtitle: "Tracked Transactions"
+    },
+    {
+        id: 2,
+        title: "85,000+",
+        subtitle: "Active Users"
+    },
+    {
+        id: 3,
+        title: "4.9/5",
+        subtitle: "User Satisfaction Rating"
+    },
+    {
+        id: 4,
+        title: "99.9%",
+        subtitle: "Uptime Security"
+    },
+]
+
+export const testimonialsDown = [
+    {
+        id: 1,
+        name: "Evans Nkuah ",
+        title: "Software Engineer",
+        shortTitle: "EN",
+        subtitle: "FinTrack totally shifted how I view my nonthly spending. The visual breakdowns make it impossible to accidentally overspend.",
+        icon: MdOutlineStar,
+    },
+    {
+        id: 2,
+        name: "Akwasi Kyei",
+        title: "Entrepreneur",
+        shortTitle: "AK",
+        subtitle: "The group savings feature helped my team keep track of our contributions easily without endless spreadsheets. High praise!",
+        icon: MdOutlineStar,
+    },
+    {
+        id: 3,
+        name: "Perpetual Emefa",
+        title: "Teacher",
+        shortTitle: "PE",
+        subtitle: "The estimated savings feature helped me set realistic goals and stay motivated to save for my dream vacation. I love it!",
+        icon: MdOutlineStar,
+    },
+    {
+        id: 4,
+        name: "Yahweh Yireh",
+        title: "Prophet",
+        shortTitle: "YY",
+        subtitle: "FinTrack is helped me stay on track with my finances and acheive my saving goals.",
+        icon: MdOutlineStar,
     }
 ]

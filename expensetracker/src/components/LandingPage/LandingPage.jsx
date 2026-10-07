@@ -3,6 +3,7 @@ import Navbar from '../Navbar'
 import Herosection from './Herosection'
 import Features from './Features'
 import Calculator from './Calculator'
+import TestimonialsTop from './TestimonialsTop'
 
 const LandingPage = () => {
   return (
@@ -17,6 +18,9 @@ const LandingPage = () => {
             </section>
             <section className='bg-[#0f172a] w-full'>
               <Calculator />
+            </section>
+            <section>
+              <TestimonialsTop />
             </section>
         </div>
         
