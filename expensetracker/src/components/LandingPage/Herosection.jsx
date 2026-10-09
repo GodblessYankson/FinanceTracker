@@ -7,8 +7,8 @@ import { FaCreditCard } from "react-icons/fa6";
 
 const Herosection = () => {
   return (
-    <section className='bg-[#f7fafc]'>
-        <div className='pt-10 max-w-285 mx-auto'>
+    <section className='bg-[#f7fafc] pt-15 pb-10'>
+        <div className='pt-10 max-w-285 mx-auto '>
             <div className='w-full flex md:block items-center justify-center pb-4'>
               <div className='flex items-center gap-1 bg-violet-300 w-75 rounded-2xl justify-center p-0.5 text-sm text-gray-900'>
               <div className='w-2 h-2 rounded-full bg-violet-500 animate-ping'></div>

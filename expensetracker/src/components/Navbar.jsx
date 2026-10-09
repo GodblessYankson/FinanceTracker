@@ -19,8 +19,8 @@ const Navbar = () => {
     }
 
   return (
-    <nav className='fixed bg-[#fefefe] w-full py-4 px-2 shadow-sm backdrop-blur-md transition-all duration-300 z-20'>
-      <div className='flex justify-between items-center max-w-285 mx-auto'>
+    <nav className='fixed bg-[#fefefe] w-full py-4 px-2 shadow-sm  transition-all duration-300 z-20'>
+      <div className='flex items-center justify-between max-w-285 mx-auto'>
         <div className='flex gap-2 items-center'>
             <FaChartBar size={40} className='text-violet-500' />
             <p className='font-bold tracking-wide text-2xl'>
@@ -42,13 +42,13 @@ const Navbar = () => {
         <div className='hidden md:block'>
             <LoginBtn />
         </div>
-        <div className='block md:hidden'>
+        <div className='md:hidden flex items-center gap-2'>
             <div onClick={ToogleMenu}>
                 {
                     showToggle ? <FiMenu size={30} /> : <IoClose size={30}/>
                 }
             </div>
-            <div className={showToggle ? "hidden" : "absolute left-0 w-full bg-white top-20 py-4 px-2 rounded-2xl shadow-2xl h-[50%] space-y-5 transition-all duration-300 ease-in-out overflow-hidden"}>
+             <div className={`absolute top-20 left-0 bg-[#fefefe] w-full py-4 px-2 shadow-xl md:hidden transition-all duration-300 space-y-4  ${showToggle ? 'hidden' : 'block'}`}>
                 {
                     navLinks.map((navLink) => (
                         <section key={navLink.id}>
@@ -62,7 +62,7 @@ const Navbar = () => {
                 <div>
                     <LoginBtn />
                 </div>
-            </div>
+            </div> 
         </div>
       </div>
     </nav>

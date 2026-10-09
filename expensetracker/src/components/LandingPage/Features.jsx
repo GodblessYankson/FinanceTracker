@@ -3,7 +3,7 @@ import { feauturesIcons } from '../../constant'
 
 const Features = () => {
   return (
-    <section className='py-20 '>
+    <section className='py-10 '>
        <div className='max-w-285 mx-auto'>
              <div className='text-center space-y-2 py-6'>
             <p className='purple text-sm'>POWERFUL CAPABILITIES</p>
