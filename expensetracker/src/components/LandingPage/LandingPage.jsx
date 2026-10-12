@@ -5,6 +5,7 @@ import Features from './Features'
 import Calculator from './Calculator'
 import TestimonialsTop from './TestimonialsTop'
 import Footer from './Footer'
+import GroupedBarChart from './GroupedBarChart'
 
 const LandingPage = () => {
   return (
@@ -25,6 +26,9 @@ const LandingPage = () => {
             </section>
             <section>
               <Footer />
+            </section>
+            <section>
+              <GroupedBarChart />
             </section>
         </div>
         
