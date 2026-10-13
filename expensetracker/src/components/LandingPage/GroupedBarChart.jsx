@@ -1,8 +1,7 @@
 import React from 'react'
-import { Bar } from 'react-chartjs-2'
+import { Pie } from 'react-chartjs-2'
 import 'chart.js/auto'
 import { LandingPageData } from '../../constant/LandingData'
-import { size } from 'zod'
 
 const GroupedBarChart = () => {
     const data = {
@@ -24,12 +23,10 @@ const GroupedBarChart = () => {
     } 
     const options = {
         resposive: true,
+        maintainAspectRatio: false,
         
         plugins: {
-            title: {
-                display:true,
-                text: 'Income and Expense comparision'
-            },
+           
             font: {
                 size: 15
             }, 
@@ -40,6 +37,7 @@ const GroupedBarChart = () => {
         scales: {
             y: {
                 beginAtZero: true,
+                stacked: true,
                 title: {
                     display: true,
                     text: 'Amount(Thousands)',
@@ -48,7 +46,7 @@ const GroupedBarChart = () => {
                     }
                 }
             },
-            x: {
+           /*  x: {
                 title: {
                     display: true,
                     text: "Income and Expenses",
@@ -56,12 +54,14 @@ const GroupedBarChart = () => {
                         size: 10
                     }
                 }
-            }
+            } */
         }
     }
   return (
-    <div className='w-full '>
-       <Bar data={data} options={options}/>
+    <div className=' w-full h-[250px] px-2'>
+{/*        <Bar data={data} options={options}/>
+        <Line data={data} options={options}  /> */}
+        <Pie data={data} options={options}/>
     </div>
   )
 }

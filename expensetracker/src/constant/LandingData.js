@@ -1,4 +1,3 @@
-import { id } from "zod/locales";
 
 export const LandingPageData = [
     {
