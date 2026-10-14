@@ -10,22 +10,22 @@ import { FaXTwitter } from "react-icons/fa6";
 
 export const navLinks = [
     {
-        id: 1,
+        id: "features",
         title: "Features",
         path: "/"
     },
     {
-        id: 2,
+        id: "Goal",
         title: "Goal Calculator",
         path: "/"
     },
     {
-        id: 3,
+        id: "Testimonial",
         title: "Testimonial",
         path: "/"
     },
     {
-        id: 4,
+        id: "Contact",
         title: "Contact Us",
         path: "/"
     }

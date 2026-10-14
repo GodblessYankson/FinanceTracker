@@ -30,7 +30,7 @@ const Navbar = () => {
         </div>
         <div className='hidden md:flex  gap-3 items-center justify-center text-semibold tracking-wide '>
             {navLinks.map((navLink) => (
-                <section key={navLink.id} className='' >
+                <section key={navLink.id} className='' id={navLink.id} >
                     <Link to={navLink.path} 
                     className='text-md relative after:absolute hover:font-semibold  after:content-[""] after:w-0 after:left-0 after:bg-violet-500 hover:after:h-0.5 hover:after:w-full hover:after:-bottom-2  after:transition-all duration-300'>
                     {navLink.title}

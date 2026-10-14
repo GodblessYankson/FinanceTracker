@@ -1,9 +1,9 @@
 import React from 'react'
-import { Pie } from 'react-chartjs-2'
+import {Bar, Line, Pie } from 'react-chartjs-2'
 import 'chart.js/auto'
 import { LandingPageData } from '../../constant/LandingData'
 
-const GroupedBarChart = () => {
+const GroupedBarChart = ({chart, setCharts}) => {
     const data = {
         labels: LandingPageData.map((data)=> data.month),
         datasets: [
@@ -37,7 +37,7 @@ const GroupedBarChart = () => {
         scales: {
             y: {
                 beginAtZero: true,
-                stacked: true,
+                
                 title: {
                     display: true,
                     text: 'Amount(Thousands)',
@@ -59,9 +59,21 @@ const GroupedBarChart = () => {
     }
   return (
     <div className=' w-full h-[250px] px-2'>
-{/*        <Bar data={data} options={options}/>
-        <Line data={data} options={options}  /> */}
-        <Pie data={data} options={options}/>
+        {
+            chart === 'bar' && (
+             <Bar data={data} options={options}/>
+            )
+        }           
+        {
+            chart === 'line' && (
+            <Line data={data} options={options}/>    
+            )
+        }           
+        {
+            chart === 'pie' && (
+            <Pie data={data} options={options}/>
+            )
+        }                         
     </div>
   )
 }

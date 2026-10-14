@@ -15,20 +15,17 @@ const LandingPage = () => {
             <section>
               <Herosection />
             </section>
-            <section>
-              <Features />
+            <section >
+              <Features id='features'/>
             </section>
-            <section className='bg-[#0f172a] w-full'>
+            <section className='bg-[#0f172a] w-full' id='Goal'>
               <Calculator />
             </section>
-            <section>
+            <section id='Testimonial'>
               <TestimonialsTop />
             </section>
-            <section>
-              <Footer />
-            </section>
-            <section>
-              <GroupedBarChart />
+            <section id='Contact'>
+              <Footer  />
             </section>
         </div>
         

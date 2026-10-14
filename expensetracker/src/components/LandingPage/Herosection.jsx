@@ -12,22 +12,22 @@ import { useState } from 'react';
 
 
 const Herosection = () => {
-  const [chart, setCharts] = useState("bar")
+  const [chart, setCharts] = useState('bar')
   return (
     <section className='bg-[#f7fafc] pt-15 pb-10'>
-        <div className='pt-10 max-w-285 mx-auto flex flex-col md:flex-row gap-6 '>
-          <div className='flex-[1] border '>
+        <div className='pt-10 max-w-285 mx-auto flex flex-col md:flex-row gap-6'>
+          <div className='flex-[1] flex flex-col'>
             <div className='w-full flex md:block items-center justify-center pb-4'>
               <div className='flex items-center gap-1 bg-violet-300 w-75 rounded-2xl justify-center p-0.5 text-sm text-gray-900'>
               <div className='w-2 h-2 rounded-full bg-violet-500 animate-ping'></div>
               <p className='text-md text-semibold tracking-wide'>Smart Personal Wealth Platform v2.0</p>
             </div>
             </div>
-            <div className='font-bold text-xl sm:text-3xl  md:text-5xl space-y-1 pb-4  text-center md:text-left '>
+            <div className='font-bold text-xl sm:text-3xl  md:text-5xl space-y-1 pb-4 text-center  md:text-left'>
               <p className='text-[#1a1a1a]'>Take Control of Your </p>
               <span className='text-violet-500 '>Finanacial Future</span>
             </div>
-            <div className='text-lg tracking-wider text-center md:text-left textcolor span-y-1 pb-4 '>
+            <div className='text-lg tracking-wider text-center md:text-left textcolor span-y-1 pb-4 pt-2'>
               <p className=''>Effortlessly track expenses, set budget caps, manage group savings, and visualize your growing wealth—all in one secure place.</p>
     
             </div>
@@ -49,29 +49,29 @@ const Herosection = () => {
               </div>
             </div>
         </div>
-        <div className='flex-[1] border border-red-400 px-2'>
+        <div className='flex-[1] px-4 py-2 bg-white shadow-violet-300 shadow-t shadow-2xl rounded-2xl'>
           <div className='w-full'>
             <div className='flex items-center justify-between py-2'>
               <div>
                 <p className='textcolor text-sm'>TOTAL NET WORTH</p>
-                <p className='font-semibold text-xl'>GHS48,250.80</p>
+                <p className='font-semibold text-base md:text-xl'>GHS48,250.80</p>
               </div>
-              <fieldset className='space-x-'>
-                <legend>Charts</legend>
-               <input type='radio' value='bar' id='bar' onClick={() => setCharts(bar)} {...chart === "bar" ? "checked" : ""} />
+               <fieldset className=''>
+                <legend className='text-center font-semibold text-sm'>Charts</legend>
+               <input type='radio' value='bar' id='bar' name='chart' onChange={() => setCharts('bar')} checked={chart === 'bar'}/>
                <label for='bar' className='mr-1'>Bar</label>
-               <input type='radio' value='line' id='line' onClick={() => setCharts(line)} {...chart === "line" ? "checked" : ""}/>
+               <input type='radio' value='line' id='line' name='chart' onChange={() => setCharts('line')} checked={chart === 'line'}/>
                <label for='line' className='mr-1'>Line</label>
-               <input type='radio' value='pie' id='pie' onClick={() => setCharts(pie)} {...chart === "pie" ? "checked" : ""}/>
+               <input type='radio' value='pie' id='pie' name='chart' onChange={() => setCharts('pie')} checked={chart === 'pie'}/>
                <label for='pie' className=''>Pie</label>
-              </fieldset>
-              <div className=' w-[100px] rounded-full flex items-center justify-center text-violet-500 font-semibold'>
+              </fieldset> 
+              <div className=' w-[100px] rounded-full flex items-center justify-center  bg-violet-100 text-green-500 font-semibold'>
                 <CgArrowTopRight />
                 <span>+14.2%</span>
               </div>
             </div>
             <div className='w-full'>
-              <GroupedBarChart />
+              <GroupedBarChart chart={chart} />
             </div>
              <div>
               <p className='textcolor text-sm py-2'>Recent Transactions</p>
