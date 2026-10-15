@@ -5,7 +5,7 @@ import { FaChartBar } from 'react-icons/fa'
 
 const Footer = () => {
   return (
-    <section className='w-full bg-[#0f172a] '>
+    <section className='w-full bg-[#0f172a] ' id='Contact'>
       <div className='max-w-285 mx-auto py-20 grid grid-cols-1 md:grid-cols-3 gap-4 '>
         <div className='col-span-1 space-y-4'>
             <div className='space-y-4'>

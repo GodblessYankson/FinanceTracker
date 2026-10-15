@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { auth, provider } from "../config/firebaseconfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BsLock, BsUnlock } from "react-icons/bs";
 import { toast } from "react-toastify"
 import {z} from "zod"
@@ -40,7 +40,10 @@ const Login = () => {
     formState: { errors },
   } = useForm({resolver: zodResolver(userSchema)})
 
-
+const navigate = useNavigate()
+const navigateBack = () => {
+  navigate("/")
+}
 
   return (
     <div className=" bg-violet-500 md:mx-auto flex items-center justify-center w-full ">
@@ -63,10 +66,10 @@ const Login = () => {
                {...register("email")}
               onChange={(e) => setemail(e.target.value)}
             />
-            {errors.email && (
-              <span>{errors.email.message}</span>
-            )}
           </div>
+          <p>{errors.email && (
+              <span>{errors.email.message}</span>
+            )}</p>
         </div>
         <div className="mb-3 space-y-2">
           <label className="font-semibold tracking-wider text-md">
@@ -81,16 +84,17 @@ const Login = () => {
               {...register("password")}
               onChange={(e) => setpassword(e.target.value)}
             />
-            {errors.password && (
-              <span>{errors.password.message}</span>
-            )}
-            <button
+            
+            <div
               onClick={() => showPassword()}
               className="mr-3 flex items-center justify-center hover-text-violer-500"
             >
               {passwordType ? <BsUnlock size={22} /> : <BsLock size={22} />}
-            </button>
+            </div>
           </div>
+          <p>{errors.password && (
+              <span>{errors.password.message}</span>
+            )}</p>
         </div>
         <div className="flex items-center gap-6 space-y-2">
           <button
@@ -102,8 +106,8 @@ const Login = () => {
          </div> 
          </form>
 
-          <button className="bg-violet-500 w-full py-2 px-6 my-4 text-white hover:bg-violet-700 hover:shadow-xl rounded-lg font-light text-xl  tracking-wide">
-            Sign In With Google
+          <button className="bg-violet-500 hover:bg-red-600 w-full py-2 px-6 my-4 text-white hover:shadow-xl rounded-lg font-light text-xl  tracking-wide" onClick={navigateBack}>
+            Back
           </button>
         
         <button>

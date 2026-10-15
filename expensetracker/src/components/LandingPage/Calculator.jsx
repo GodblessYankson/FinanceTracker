@@ -27,7 +27,7 @@ const Calculator = () => {
     
 
   return (
-   <section className='text-white w-full'>
+   <section className='text-white w-full' id='Calculator'>
     <div className='max-w-285 mx-auto py-20 md:flex items-center flex-2 gap-6'>
        
          <div className='flex-1 mb-6'>

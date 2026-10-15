@@ -63,7 +63,7 @@ const Signup = () => {
 
       confirmPassword: z
         .string()
-        .min(8, "Password must be more 7")
+        .min(8, "Password must be more than 7")
         .max(30, "Password must not exceed 30 characters"), 
  
       phone: z
@@ -98,7 +98,7 @@ const Signup = () => {
 
       nextOfKin: z
         .string()
-        .min(2, "Must be more than one characters")
+        .min(2, "Must be two or more characters")
         .max(50, "Must not exceed 50 characters")
         .regex(
           /^[A-za-z- ]+$/,
@@ -186,7 +186,7 @@ const Signup = () => {
                 placeholder="Enter password"
                 className="signupInput"
               />
-              <button
+              <div
                 onClick={() =>
                   setshowasswordType(
                     showPasswordType === "password" ? null : "password",
@@ -198,7 +198,7 @@ const Signup = () => {
                 ) : (
                   <BsLock size={22} />
                 )}
-              </button>
+              </div>
             </div>
             {errors.password && (
               <span className="text-red-500 text-sm">
@@ -218,7 +218,7 @@ const Signup = () => {
                 placeholder="Enter password"
                 className="signupInput"
               />
-              <button
+              <div
                 onClick={() =>
                   setshowasswordType(
                     showPasswordType === "confirmPassword"
@@ -232,7 +232,7 @@ const Signup = () => {
                 ) : (
                   <BsLock size={22} />
                 )}
-              </button>
+              </div>
             </div>
             {errors.confirmPassword && (
               <span className="text-red-500 text-sm">
