@@ -20,7 +20,7 @@ const LoggedInNavbar = () => {
                 </p>
             </div>
         </div>
-        <div className='flex items-center gap-1 bg-violet-500 p-2 text-white rounded-xl text-base'>
+        <div className='flex items-center gap-1 bg-violet-500 py-2 px-4 text-white rounded-xl text-base'>
             <GoPlus size={30}/>
             <p>Add Transaction</p>
         </div>
