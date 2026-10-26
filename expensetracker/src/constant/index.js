@@ -5,6 +5,7 @@ import { GoGoal } from "react-icons/go";
 import { FaShieldAlt } from "react-icons/fa";
 import { FcSmartphoneTablet } from "react-icons/fc";
 import { FaXTwitter } from "react-icons/fa6";
+import { LifeBuoy, Receipt, Boxes, Package, UserCircle, BarChart3, LayoutDashboard, Settings } from "lucide-react"
 
 
 
@@ -175,4 +176,47 @@ export const footerLinks = [
         link2: "Terms of service",
         link3: "Cookie Preferences",
     }
+]
+
+export const sideNav = [
+    {
+        id: 1,
+        title: "Dashboard",
+        icon : LifeBuoy
+    },
+    {
+        id: 2,
+        title: "Analytics",
+        icon : Receipt
+    },
+    {
+        id: 3,
+        title: "Transactions",
+        icon : Boxes
+    },
+    {
+        id: 4,
+        title: "Incomes",
+        icon : Package
+    },
+    {
+        id: 5,
+        title: "Expenses",
+        icon : UserCircle
+    },
+    {
+        id: 6,
+        title: "LayerDashboard",
+        icon : BarChart3
+    },
+    {
+        id: 7,
+        title: "Reports",
+        icon : LayoutDashboard
+    },
+    {
+        id: 8,
+        title: "Settings",
+        icon : Settings
+    },
 ]

@@ -7,8 +7,8 @@ export const LoginBtn = () => {
             <Link to="/signup" className="text-white bg-violet-500 shadow-2xl rounded-2xl px-8 py-2">Sign Up</Link>
         </div>
         <div className="block md:hidden space-y-3 ">
-            <Link className="block bg-[#f1f5f9] py-2 text-center w-full rounded-xl">Log In</Link>
-            <Link className="block bg-violet-500 py-2 text-center w-full text-[#f2f9f7] rounded-xl">Sign Up</Link>
+            <Link to="/login" className="block bg-[#f1f5f9] py-2 text-center w-full rounded-xl">Log In</Link>
+            <Link to="/singup" className="block bg-violet-500 py-2 text-center w-full text-[#f2f9f7] rounded-xl">Sign Up</Link>
         </div>
         </div>
     )

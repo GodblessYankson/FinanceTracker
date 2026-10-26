@@ -1,5 +1,3 @@
-import React from 'react'
-import { PiChartBarBold } from "react-icons/pi";
 import { FaChartBar} from "react-icons/fa";
 import { FiMenu } from "react-icons/fi";
 import { IoClose } from "react-icons/io5";
