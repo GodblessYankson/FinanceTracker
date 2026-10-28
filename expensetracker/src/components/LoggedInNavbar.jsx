@@ -8,29 +8,16 @@ import { IoIosNotificationsOutline } from "react-icons/io";
 
 
 const sideNavContext = createContext()
-const LoggedInNavbar = ({sideNavToggle, setSideNavToggle}) => {
+const LoggedInNavbar = ({sideNavToggle, setSideNavToggle, setaddTransactionModal }) => {
     const { adminLoading, adminInfo } = useAdmin()
     if(adminLoading) {
         return <p>Loading...</p>
     }
 const sideToogle = createContext()
 
-
   return (
-    <nav className={`${sideNavContext ? '-z-50' : 'z-50'} bg-[#ffffff] fixed top-0 right-0 w-full p-2 bg-white shadow-md overflow-hidden`}>
+    <nav className={`${sideNavContext ? '-z-50' : 'z-50'} bg-[#ffffff] static top-0 right-0 w-full  p-2 bg-white shadow-md overflow-hidden`}>
         <div className=' flex items-center  justify-between'>
-            {/* <div className='flex  items-center gap-3 py-2'>
-            <FaChartBar size={40} className='text-violet-500'/>
-            <div className='text-sm'>
-                <p className='font-bold text-lg'>
-                    Fin
-                    <span className='text-violet-500'>Track</span>
-                </p>
-                <p className='textcolor'>
-                    Personal Finance Tracker 
-                </p>
-            </div>
-        </div> */}
         <div 
         className={`${sideNavToggle ? "invisible" : "visible"} w-10 h-10 bg-gray-300 rounded-sm flex items-center justify-center`}
         onClick={() => setSideNavToggle(!sideNavToggle)}
@@ -60,15 +47,9 @@ const sideToogle = createContext()
 
                 </div>
             </div>
-            <button className='bg-violet-500 px-4 py-2 rounded-xl text-lg tracking-wide'>
+            <button className='bg-violet-500 px-4 py-2 rounded-xl text-lg tracking-wide' onClick={() => setaddTransactionModal(true)}>
                 Add Transactions
             </button>
-            {/* <div className='bg-gray-400 w-12 h-12 border-2 border-violet-500 rounded-full flex items-center justify-center font-bold text-2xl'>
-                <p>{adminInfo?.firstName?.charAt(0)?.toUpperCase()}{adminInfo?.lastName?.charAt(0)?.toUpperCase()}</p>
-            </div>
-            <div className='bg-green-300 w-1 h-1 absolute top-10 right-1 animate-ping'>
-
-            </div> */}
         </div>
         </div>
     </nav>
