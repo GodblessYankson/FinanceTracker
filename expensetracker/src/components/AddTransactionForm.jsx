@@ -2,6 +2,7 @@ import React from 'react'
 import { useAddTransaction } from '../hooks/useAddTransactions'
 import { useState } from 'react'
 import { IoClose } from "react-icons/io5";
+import { toast } from 'react-toastify';
 
 const AddTransactionForm = ({setaddTransactionModal}) => {
 /* Add close state */
@@ -12,22 +13,43 @@ console.log(close) */
     
 /* Adding addTransaction arguments */
     const [description, setDescription] = useState("")
-    const [transactionAmount, setTransactionAmount] = useState(0)
     const [transactionType, setTransactionType] = useState("income")
+    const [transactionAmount, setTransactionAmount] = useState()
     const [category, setCategory] = useState("")
     
 /* Add transaction button function */
-const onSubmit = (e) => {
+const onSubmit = async (e) => {
     e.preventDefault();
-    addTransaction({
-        description,
-        transactionAmount,
+
+  /* Add form validate */
+  if(!description.trim()) {
+    toast.error("Enter a valid title")
+    return;
+  }
+  if(transactionAmount <=0) {
+    toast.error("Enter valid amount")
+    return;
+  }
+  if(!category) {
+    toast.error("Select a category")
+    return
+  }
+
+    const success = await  addTransaction({
+        description: description.trim(),
         transactionType,
+        transactionAmount,
         category
     })
+    
+    if(success) {
+        setDescription("")
+        setTransactionAmount("")
+        setCategory("")
+    }
 
-    setDescription(" ")
-    setTransactionAmount(" ")
+    /* setDescription(" ")
+    setTransactionAmount(" ") */
 }
   return (
     <div className='border border-gray-300 rounded-xl shadow-md textcolor p-3 md:px-5'>
@@ -43,19 +65,19 @@ const onSubmit = (e) => {
         />
         
         </div>
-      <form action="">
+      <form action="" onSubmit={onSubmit}>
         {/* Add income and expense */}
         <label className='text-lg'>
             Transaction Type
         </label>
         <div className='grid grid-cols-2 bg-[#f1f5f9] items-center'>
             <div className='cols-1 m-1 '>
-            <button onClick={(e) => setTransactionType(e.target.value)} className={`${transactionType === 'income' ?'bg-green-500 rounded-sm font-bold text-white' : 'bg-[#f1f5f9]'} w-full py-1`} >
+            <button type='button' value="income" onClick={() => setTransactionType("income")} className={`${transactionType === 'income' ?'bg-green-500 rounded-sm font-bold text-white' : 'bg-[#f1f5f9]'} w-full py-1`} >
                 Income
             </button>
             </div>
             <div className='cols-1 m-1' >
-            <button onClick={(e) => setTransactionType(e.target.value)} className={`${transactionType === 'expense' ? 'bg-red-500 rounded-sm font-bold text-white' : 'bg-[#f1f5f9]'} w-full py-1`}>
+            <button type='button' value="expense" onClick={() => setTransactionType("expense")} className={`${transactionType === 'expense' ? 'bg-red-500 rounded-sm font-bold text-white' : 'bg-[#f1f5f9]'} w-full py-1`}>
                 Expense
             </button>
             </div>
@@ -68,6 +90,7 @@ const onSubmit = (e) => {
         </label>
         <input 
         type="text"
+        value={description}
         onChange={(e) => setDescription(e.target.value)} 
         placeholder={`{${transactionType === "income" ? 'e.g. Received money from BlessTech': 'e.g. Paid water bills'}`}
         className='bg-[#f1f5f9] py-2 px-1 ring-1 ring-violet-500 outline-violet-500'
@@ -82,6 +105,7 @@ const onSubmit = (e) => {
         <input
         type='number'
         placeholder='0.00'
+        value={transactionAmount}
         onChange={(e) => setTransactionAmount(e.target.value)}
         required
         className='bg-[#f1f5f9] py-2 px-1 ring-1 ring-violet-500 outline-violet-500'
@@ -96,13 +120,15 @@ const onSubmit = (e) => {
         <select 
         name="category" 
         id="" 
+        value={category}
         onChange={(e) => setCategory(e.target.value)}
-        className='bg-[#f1f5f9] bg-[#f1f5f9] mt-1 py-2 px-1 ring-1 ring-violet-500 outline-violet-500'>
+        className='bg-[#f1f5f9]  mt-1 py-2 px-1 ring-1 ring-violet-500 outline-violet-500'>
             {
-            description === "income" ? 
+            transactionType === "income" ? 
             (
             <>
-            <option value="savary">Salary</option>
+            <option value="" disabled>Select category</option>
+            <option value="savary" className='hover:bg-blue-50'>Salary</option>
             <option value="investment">Investments</option>
             <option value="gift">Gift</option>
             <option value="freelance">Freelance</option>
@@ -110,6 +136,7 @@ const onSubmit = (e) => {
             </>
             ) : (
             <>
+            <option disabled>Select category</option>
             <option value="transaction">Transportation</option>
             <option value="utilities">Utilities</option>
             <option value="education">Education</option>
@@ -136,13 +163,13 @@ const onSubmit = (e) => {
         {/* Creating the exist and save bitton */}
         <div className='grid grid-cols-2 gap-4 text-white my-2'>
             <button
+            type='submit'
             onClick={() => setaddTransactionModal(false)}
             className='cols-1 bg-red-500 py-3 font-semibold rounded-xl'>
                 Cancel 
             </button>
             <button 
             type='submit'
-            onClick={onSubmit}
             className='cols-1 bg-green-500 py-3 font-semibold rounded-xl'>
                 Save Entry
             </button>

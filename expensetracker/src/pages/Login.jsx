@@ -16,7 +16,7 @@ const Login = () => {
 
   //Changing password to text
   const [passwordType, setPasswordType] = useState(false);
-  console.log(passwordType);
+  
 
   const showPassword = () => {
     setPasswordType(!passwordType);

@@ -28,6 +28,7 @@ export const useSignIn = () => {
             //User data exists
             const userData = userDoc.data()
             console.log("User data:", userData)
+            
 
             //check the user's role
             if(userData.role === "SuperAdmin") {
@@ -45,8 +46,10 @@ export const useSignIn = () => {
          } 
     }
     catch(error) {
-        console.log("Account not found", error)
-        toast.error("Account not found")
+        console.error("Login error code", error.code)
+        console.error("Login error messagge", error.message)
+
+        toast.error(error.message)
     }
 }
     return {
