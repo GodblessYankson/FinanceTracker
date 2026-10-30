@@ -3,23 +3,24 @@ import { useAddTransaction } from '../hooks/useAddTransactions'
 import { useState } from 'react'
 import { IoClose } from "react-icons/io5";
 import { toast } from 'react-toastify';
+import Loader from './Loader'
+import { useEffect } from 'react';
 
 const AddTransactionForm = ({setaddTransactionModal}) => {
-/* Add close state */
-/* const [close, setClose] = useState(false)
-console.log(close) */
-    /* Calling addTransaction function */
-    const { addTransaction } = useAddTransaction()
+
+const { addTransaction } = useAddTransaction()
     
 /* Adding addTransaction arguments */
     const [description, setDescription] = useState("")
     const [transactionType, setTransactionType] = useState("income")
     const [transactionAmount, setTransactionAmount] = useState()
     const [category, setCategory] = useState("")
+    const [loading, setLoading] = useState(false)
     
 /* Add transaction button function */
 const onSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true)
 
   /* Add form validate */
   if(!description.trim()) {
@@ -34,6 +35,11 @@ const onSubmit = async (e) => {
     toast.error("Select a category")
     return
   }
+  
+    if(loading) {
+        return(<Loader />)
+    }
+  
 
     const success = await  addTransaction({
         description: description.trim(),
@@ -46,10 +52,9 @@ const onSubmit = async (e) => {
         setDescription("")
         setTransactionAmount("")
         setCategory("")
+        
     }
 
-    /* setDescription(" ")
-    setTransactionAmount(" ") */
 }
   return (
     <div className='border border-gray-300 rounded-xl shadow-md textcolor p-3 md:px-5'>
