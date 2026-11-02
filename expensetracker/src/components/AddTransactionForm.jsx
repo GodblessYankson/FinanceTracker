@@ -4,7 +4,9 @@ import { useState } from 'react'
 import { IoClose } from "react-icons/io5";
 import { toast } from 'react-toastify';
 import Loader from './Loader'
-import { useEffect } from 'react';
+//import { useEffect } from 'react';
+import { PulseLoader } from "react-spinners";
+
 
 const AddTransactionForm = ({setaddTransactionModal}) => {
 
@@ -25,14 +27,17 @@ const onSubmit = async (e) => {
   /* Add form validate */
   if(!description.trim()) {
     toast.error("Enter a valid title")
+    setLoading(false)
     return;
   }
   if(transactionAmount <=0) {
     toast.error("Enter valid amount")
+    setLoading(false)
     return;
   }
   if(!category) {
     toast.error("Select a category")
+    setLoading(false)
     return
   }
   
@@ -52,6 +57,7 @@ const onSubmit = async (e) => {
         setDescription("")
         setTransactionAmount("")
         setCategory("")
+        setLoading(false)
         
     }
 
@@ -95,6 +101,7 @@ const onSubmit = async (e) => {
         </label>
         <input 
         type="text"
+        required
         value={description}
         onChange={(e) => setDescription(e.target.value)} 
         placeholder={`{${transactionType === "income" ? 'e.g. Received money from BlessTech': 'e.g. Paid water bills'}`}
@@ -109,10 +116,10 @@ const onSubmit = async (e) => {
         </label>
         <input
         type='number'
+        required
         placeholder='0.00'
         value={transactionAmount}
         onChange={(e) => setTransactionAmount(e.target.value)}
-        required
         className='bg-[#f1f5f9] py-2 px-1 ring-1 ring-violet-500 outline-violet-500'
         />
         </div>
@@ -125,6 +132,7 @@ const onSubmit = async (e) => {
         <select 
         name="category" 
         id="" 
+        required
         value={category}
         onChange={(e) => setCategory(e.target.value)}
         className='bg-[#f1f5f9]  mt-1 py-2 px-1 ring-1 ring-violet-500 outline-violet-500'>
@@ -141,7 +149,7 @@ const onSubmit = async (e) => {
             </>
             ) : (
             <>
-            <option disabled>Select category</option>
+            <option value="" disabled>Select category</option>
             <option value="transaction">Transportation</option>
             <option value="utilities">Utilities</option>
             <option value="education">Education</option>
@@ -173,11 +181,18 @@ const onSubmit = async (e) => {
             className='cols-1 bg-red-500 py-3 font-semibold rounded-xl'>
                 Cancel 
             </button>
+            <div className=''>
+            {loading
+             ? (
+             <div className='flex justify-center items-center w-full h-full'>
+                <PulseLoader  color='#6366f1' size={10}/>
+            </div>) : 
             <button 
             type='submit'
-            className='cols-1 bg-green-500 py-3 font-semibold rounded-xl'>
+            className='cols-1 bg-green-500 py-3 font-semibold rounded-xl w-full'>
                 Save Entry
-            </button>
+            </button>}
+            </div>
         </div>
       </form>
     </div>

@@ -3,17 +3,16 @@ import { useAdmin } from "./AdminContext"
 import SideNav from "../../components/SideNav"
 import { useState } from "react"
 import AddTransactionForm from "../../components/AddTransactionForm"
-import { PulseLoader } from "react-spinners";
 import Loader from "../../components/Loader"
 
-/*  const override = {
+  const override = {
   backgroundColor: "#f1f5f9",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
   height: "100vh",
   margin: "0 auto",
-}  */
+}  
 
 const AdminDashboard = () => {
 /* Setting nav toggle */
@@ -21,18 +20,11 @@ const AdminDashboard = () => {
 
 /* Add the modal state */
 const [addTransactionModal, setaddTransactionModal] = useState(false)
-console.log(addTransactionModal)
 
 /* Getting admin info */
   const { adminLoading} = useAdmin()
  if(adminLoading){
-  return <Loader/> /* <PulseLoader 
-        color="#6366f1"
-        cssOverride={override}
-        size={20}
-        aria-label="Loading Spinner"
-        data-testid="loader"
-      /> */
+  return <Loader /> 
       
  }
 
