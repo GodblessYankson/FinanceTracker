@@ -4,6 +4,7 @@ import SideNav from "../../components/SideNav"
 import { useState } from "react"
 import AddTransactionForm from "../../components/AddTransactionForm"
 import Loader from "../../components/Loader"
+import TotalExpenses from "./TotalExpenses"
 
   const override = {
   backgroundColor: "#f1f5f9",
@@ -37,8 +38,11 @@ const [addTransactionModal, setaddTransactionModal] = useState(false)
         <div className="col-span-1">
           <SideNav sideNavToggle={sideNavToggle} setSideNavToggle={setSideNavToggle} />
         </div>
-        <div className={`${addTransactionModal ? "block" : "hidden"} col-span-3 w-full md:w-[500px] blackdrop-blur-md absolute md:top-30 md:left-[40%] transition-all duration-300`}>
+        <div className="col-span-3">
+          <div className={`${addTransactionModal ? "block" : "hidden"}  w-full md:w-[500px] blackdrop-blur-md absolute md:top-30 md:left-[40%] transition-all duration-300`}>
             <AddTransactionForm addTransactionModal={addTransactionModal} setaddTransactionModal={setaddTransactionModal} />
+        </div>
+        <TotalExpenses />
         </div>
       </div> 
       
