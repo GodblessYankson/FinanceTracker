@@ -150,10 +150,10 @@ const onSubmit = async (e) => {
             ) : (
             <>
             <option value="" disabled>Select category</option>
-            <option value="transaction">Transportation</option>
+            <option value="transportation">Transportation</option>
             <option value="utilities">Utilities</option>
             <option value="education">Education</option>
-            <option value="Groceries">Groceries</option>
+            <option value="groceries">Groceries</option>
             <option value="food">Food</option>
             <option value="others">Others</option>
             </>

@@ -6,7 +6,9 @@ import { useNavigate } from "react-router-dom";
 export const useAddTransaction = () => {
     const navigate = useNavigate()
 
+
     const addTransaction = async ({
+        
         description,
         transactionType,
         transactionAmount,
@@ -43,6 +45,7 @@ export const useAddTransaction = () => {
 
     })
     toast.success("Transaction added successfully!")
+    
     return true
 }   catch(error) {
     console.log("Error adding transaction",error)
