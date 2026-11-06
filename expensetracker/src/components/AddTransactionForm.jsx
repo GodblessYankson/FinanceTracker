@@ -63,7 +63,7 @@ const onSubmit = async (e) => {
 
 }
   return (
-    <div className='border border-gray-300 rounded-xl shadow-md textcolor p-3 md:px-5'>
+    <div className='border border-gray-300 rounded-xl shadow-md textcolor p-3 md:px-5 bg-[#ffffff]'>
         <div className='flex items-center justify-between border-b border-[#f1f5f9] py-2'>
             <p className='font-bold text-[#1a1a1a] text-xl tracking-wide'>
             Add New Transaction
